@@ -1,0 +1,1 @@
+# vite_laravel_notes_app
