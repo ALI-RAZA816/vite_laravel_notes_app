@@ -1,0 +1,10 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  color:var(--on-surface);
+  overflow-x:hidden;
+}
