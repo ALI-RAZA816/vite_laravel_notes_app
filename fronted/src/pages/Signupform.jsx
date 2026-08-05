@@ -7,7 +7,7 @@ const SignupForm = () => {
   return (
     <div className="container-fluid">
         <div className="row border vh-100 d-flex justify-content-center align-items-center">
-            <div className={`col-3 card py-3`}>
+            <div className={`${styles.card} ${styles.formWrapper}`}>
                 {/* Logo */}
                 <div className={`d-flex align-items-center mb-2 ${styles.logoRow}`}>
                 <div className={styles.logoIcon}>
@@ -96,23 +96,6 @@ const SignupForm = () => {
                     />
                     </div>
                 </div>
-
-                {/* Terms checkbox */}
-                <div className={`d-flex align-items-center mb-4 ${styles.checkRow}`}>
-                    <input
-                    type="checkbox"
-                    id="agree"
-                    className={styles.checkbox}
-                    />
-                    <label htmlFor="agree" className={styles.checkLabel}>
-                    I agree to the{" "}
-                    <a href="#" className={styles.link}>
-                        Terms of Service
-                    </a>{" "}
-                    and <a href="#" className={styles.link}>Privacy Policy</a>.
-                    </label>
-                </div>
-
                 {/* Submit */}
                 <button type="submit" className={`btn w-100 ${styles.submitBtn}`}>
                     Create Account

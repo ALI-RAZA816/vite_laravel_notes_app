@@ -6,7 +6,7 @@ const LoginForm = () => {
 
 
   return (
-    <div className={`${styles.container} container-fluid`}>
+    <div className={`container-fluid vh-100 d-flex justify-content-center align-items-center`}>
       <div className={styles.formWrapper}>
         {/* Logo */}
         <div className={`d-flex align-items-center justify-content-center mb-3 ${styles.logoRow}`}>
@@ -71,9 +71,9 @@ const LoginForm = () => {
                 <label htmlFor="password" className={styles.label}>
                   Password
                 </label>
-                <a href="#" className={styles.forgotLink}>
+                <Link to="/forgottonpassword" className={styles.forgotLink}>
                   Forgot password?
-                </a>
+                </Link>
               </div>
               <div className={styles.inputGroup}>
                 <span className={styles.inputIcon}>

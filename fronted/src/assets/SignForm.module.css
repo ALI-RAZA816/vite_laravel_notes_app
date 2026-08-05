@@ -1,7 +1,16 @@
 
 .formWrapper {
   width: 100%;
-  /* max-width: 480px; */
+  max-width: 508px;
+}
+
+/* Card */
+.card {
+  /* text-align: left !important; */
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px ;
+  padding: 32px;
 }
 
 /* Logo */
