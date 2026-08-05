@@ -62,7 +62,7 @@
 }
 
 .otpInput {
-  width: 56px;
+  width:100% !important;
   height: 64px;
   text-align: center;
   font-size: 22px;
