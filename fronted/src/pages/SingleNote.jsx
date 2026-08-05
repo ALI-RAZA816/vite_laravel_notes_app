@@ -6,53 +6,9 @@ import { MdOutlineImage, MdOutlineIosShare } from "react-icons/md";
 import { MdOutlineStarOutline, MdStar, MdOutlineAccessTime } from "react-icons/md";
 
 const SingleNote = () => {
-  const [isFavorite, setIsFavorite] = useState(true);
-
-  const [actionItems, setActionItems] = useState([
-    { id: 1, label: "Finalize UI design system", checked: true },
-    { id: 2, label: "Setup CI/CD pipelines", checked: false },
-    { id: 3, label: "Security audit of API endpoints", checked: false },
-  ]);
-
-  const toggleItem = (id) => {
-    setActionItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item
-      )
-    );
-  };
-
+  
   return (
     <div className={styles.detailWrapper}>
-      {/* Floating toolbar */}
-      <div className={`d-flex align-items-center justify-content-center ${styles.toolbar}`}>
-        <button type="button" className={styles.toolBtn} title="Bold">
-          <MdFormatBold />
-        </button>
-        <button type="button" className={styles.toolBtn} title="Italic">
-          <MdFormatItalic />
-        </button>
-        <button type="button" className={styles.toolBtn} title="Text size">
-          <MdFormatSize />
-        </button>
-        <span className={styles.toolDivider}></span>
-        <button type="button" className={styles.toolBtn} title="Bulleted list">
-          <MdOutlineFormatListBulleted />
-        </button>
-        <button type="button" className={styles.toolBtn} title="Checklist">
-          <MdOutlineChecklist />
-        </button>
-        <span className={styles.toolDivider}></span>
-        <button type="button" className={styles.toolBtn} title="Insert image">
-          <MdOutlineImage />
-        </button>
-        <button type="button" className={styles.toolBtn} title="Share">
-          <MdOutlineIosShare />
-        </button>
-        <button type="button" className={styles.saveBtn}>
-          Save
-        </button>
-      </div>
 
       {/* Note card */}
       <div className={styles.noteCard}>
@@ -67,10 +23,8 @@ const SingleNote = () => {
           <button
             type="button"
             className={styles.favoriteBtn}
-            onClick={() => setIsFavorite((prev) => !prev)}
-            aria-label="Toggle favorite"
           >
-            {isFavorite ? <MdStar /> : <MdOutlineStarOutline />}
+        <MdStar />  <MdOutlineStarOutline />
           </button>
         </div>
 
@@ -104,24 +58,6 @@ const SingleNote = () => {
             <strong>Phase 3:</strong> Beta launch for internal stakeholders
             (Nov 20).
           </p>
-
-          <h3 className={styles.sectionHeading}>Action Items</h3>
-          <div className={`d-flex flex-wrap align-items-center ${styles.checklist}`}>
-            {actionItems.map((item) => (
-              <label key={item.id} className={styles.checklistItem}>
-                <input
-                  type="checkbox"
-                  checked={item.checked}
-                  onChange={() => toggleItem(item.id)}
-                  className={styles.checkboxInput}
-                />
-                <span className={item.checked ? styles.checkedLabel : ""}>
-                  {item.label}
-                </span>
-              </label>
-            ))}
-          </div>
-
           <p className={styles.closingText}>
             By the end of the year, Alpha should be ready for public beta. We
             need to ensure that the minimalist aesthetic remains consistent

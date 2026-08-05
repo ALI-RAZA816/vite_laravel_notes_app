@@ -7,19 +7,8 @@ import { MdKeyboardArrowDown, MdOutlineEdit } from "react-icons/md";
 import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
 import { MdOutlineFileDownload, MdOutlineDeleteOutline } from "react-icons/md";
 
-const accentColors = [
-  { id: "indigo", hex: "#5b4bf5" },
-  { id: "green", hex: "#16a34a" },
-  { id: "orange", hex: "#f97316" },
-  { id: "pink", hex: "#ec4899" },
-  { id: "blue", hex: "#0ea5e9" },
-];
 
 const SettingsPage = () => {
-  const [themeMode, setThemeMode] = useState("light");
-  const [accentColor, setAccentColor] = useState("indigo");
-  const [emailNotifications, setEmailNotifications] = useState(true);
-  const [desktopAlerts, setDesktopAlerts] = useState(false);
 
   return (
     <div className={styles.pageWrapper}>
