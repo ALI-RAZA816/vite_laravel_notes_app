@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 50;
+  z-index:99;
   padding: 20px;
   background-color: rgba(17, 24, 39, 0.25);
 }

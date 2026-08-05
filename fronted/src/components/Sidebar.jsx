@@ -7,18 +7,18 @@ import { MdOutlineNewLabel } from "react-icons/md";
 import{Link, Outlet} from 'react-router-dom'
 import CategoryModel from "../pages/CategoryModel";
 import {AppContext} from "../context/AppContext";
+import NoteModel from "../pages/NoteModel";
+import DeleteModel from "../pages/DeleteModel";
 
 const Sidebar = () => {
 
-    const { openModel, setopenModel} = useContext(AppContext);
-    const showModel = (event)=>{
-        event.preventDefault();
-        setopenModel(true);
-    }
+    const { openModel, setopenModel, showNoteModel, showModel, setNoteModel, showDeleteModel} = useContext(AppContext);
 
   return (
     <>
     {openModel && <CategoryModel/>}
+    {showNoteModel && <NoteModel/>}
+    {showDeleteModel && <DeleteModel/>}
     <div className="container-fluid p-0">
         <div className="row">
             <div className="col-2 p-0">
@@ -28,10 +28,10 @@ const Sidebar = () => {
                     {/* Nav items */}
                     <ul className={`list-unstyled ${styles.navList}`}>
                         <li>
-                            <a href="#" className="text-decoration-none"><button type="button" className={`d-flex btn align-items-center w-100 ${styles.button}`}><CgNotes className="me-2"/><span>All Notes</span></button></a>
+                            <Link to="/dashboard/notes" className="text-decoration-none"><button type="button" className={`d-flex btn align-items-center w-100 ${styles.button}`}><CgNotes className="me-2"/><span>All Notes</span></button></Link>
                         </li>
                         <li>
-                            <a href="#" className="text-decoration-none"><button type="button" className={`d-flex btn align-items-center w-100 ${styles.button}`}><MdOutlineStarOutline className="fs-5 me-2" /><span>Favorite</span></button></a>
+                            <Link to="/dashboard/notes/favourite" className="text-decoration-none"><button type="button" className={`d-flex btn align-items-center w-100 ${styles.button}`}><MdOutlineStarOutline className="fs-5 me-2" /><span>Favorite</span></button></Link>
                         </li>
                         <li>
                             <a href="#" onClick={showModel} className="text-decoration-none"><button type="button" className={`d-flex btn align-items-center w-100 ${styles.button} `}><MdOutlineNewLabel className="me-2" /><span>Add Category</span></button></a>

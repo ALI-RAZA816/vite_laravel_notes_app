@@ -7,11 +7,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 const CategoryModel = ({ onClose }) => {
 
-   const { openModel, setopenModel} = useContext(AppContext);
-    const hideModel = (event)=>{
-        event.preventDefault();
-        setopenModel(false);
-    }
+   const { openModel, setopenModel, hideModel} = useContext(AppContext);
+    
 
   return (
     <div className={styles.overlay}>

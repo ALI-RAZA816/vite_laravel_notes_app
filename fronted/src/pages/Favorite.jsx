@@ -1,0 +1,103 @@
+import React, { useContext, useState } from "react";
+import styles from "../assets/NotesDashboard.module.css";
+import { AppContext } from "../context/AppContext";
+import { MdOutlineEdit } from "react-icons/md";
+import { MdOutlineStarOutline } from "react-icons/md";
+import { RiDeleteBinLine } from "react-icons/ri";
+
+
+
+const Favorite = () => {
+
+  const {showNoteModel, setNoteModel, showNote, showDelete} = useContext(AppContext);
+
+  const notes = [
+    {
+      id: 1,
+      tag: "Work",
+      date: "Oct 24, 2023",
+      title: "Project Alpha Strategy",
+      excerpt:
+        "The primary objective for the next quarter is to finalize the design system implementation and...",
+      footer: "avatar",
+      footerValue: "JD",
+      image: null,
+    }
+  ];
+
+  const tagClassMap = {
+    Work: styles.tagWork,
+  };
+
+  return (
+    <div className={styles.mainWrapper}>
+      {/* Content */}
+      <main className={styles.content}>
+        <div className={`d-flex align-items-start justify-content-between ${styles.headerRow}`}>
+          <div>
+            <h1 className={styles.pageTitle}>Favorite Notes</h1>
+            <p className={styles.pageSubtitle}>Your starred notes and ideas.</p>
+          </div>
+
+          <div className={`d-flex ${styles.actionButtons}`}>
+                <select className="form-select">
+                    <option value="all">All Categories</option>
+                    <option value="Work">Work</option>
+                    <option value="Ideas">Ideas</option>
+                    <option value="Important">Important</option>
+                    <option value="Personal">Personal</option>
+                </select>
+            <select className="form-select">
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="titleAsc">Title (A-Z)</option>
+                <option value="titleDesc">Title (Z-A)</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Notes grid */}
+        <div className={styles.notesGrid}>
+          {notes.map((note) => (
+            <div key={note.id} className={styles.noteCard}>
+              {note.image && (
+                <div
+                  className={styles.noteImage}
+                  style={{ backgroundImage: `url(${note.image})` }}
+                ></div>
+              )}
+              <div className={styles.noteCardBody}>
+                <div className={`d-flex align-items-center justify-content-between ${styles.noteTop}`}>
+                  <span className={`${styles.tag} ${tagClassMap[note.tag]}`}>{note.tag}</span>
+                  <span className={styles.noteDate}>{note.date}</span>
+                </div>
+                <h3 className={styles.noteTitle}>{note.title}</h3>
+                <p className={styles.noteExcerpt}>{note.excerpt}</p>
+              </div>
+              <div className={styles.icons}>
+                <div onClick={()=>showNote('editbtn')} className={`${styles.icon} me-2`}>
+                  <MdOutlineEdit className={`${styles.editIcon}`} />
+                </div>
+                <div className={`${styles.icon} me-2`}>
+                  <MdOutlineStarOutline className={`${styles.start}`} />
+                </div>
+                <div onClick={showDelete} className={`${styles.icon}`}>
+                  <RiDeleteBinLine className={`${styles.deleteIcon}`}/>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+
+      {/* Floating add button */}
+      <button onClick={()=>showNote('addbtn')} type="button" className={styles.fab} aria-label="Add note">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12h14" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" />
+        </svg>
+      </button>
+    </div>
+  );
+};
+
+export default Favorite;

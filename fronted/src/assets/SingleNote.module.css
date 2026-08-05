@@ -1,0 +1,194 @@
+.detailWrapper {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 24px 32px 48px;
+}
+
+/* Floating toolbar */
+.toolbar {
+  width: fit-content;
+  margin: 0 auto 24px;
+  background: #ffffff;
+  border-radius: 40px;
+  padding: 8px 10px;
+  box-shadow: 0 8px 24px rgba(20, 20, 40, 0.1);
+  gap: 4px;
+}
+
+.toolBtn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  color: #2a2b33;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.toolBtn:hover {
+  background: #f0f0f7;
+}
+
+.toolDivider {
+  width: 1px;
+  height: 22px;
+  background: #e4e4ee;
+  margin: 0 6px;
+}
+
+.saveBtn {
+  border: none;
+  background: #5b4bf5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 24px;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.saveBtn:hover {
+  background: #4c3ee0;
+}
+
+/* Note card */
+.noteCard {
+  max-width: 1120px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(20, 20, 40, 0.06);
+  padding: 32px 40px 48px;
+}
+
+.metaRow {
+  margin-bottom: 20px;
+}
+
+.tagBadge {
+  background: #eceaff;
+  color: #5b4bf5;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-right: 14px;
+}
+
+.readTime {
+  font-size: 14px;
+  color: #6b6e78;
+}
+
+.favoriteBtn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  color: #5b4bf5;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.noteTitle {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1b1c22;
+  margin: 0 0 8px;
+}
+
+.lastEdited {
+  font-style: italic;
+  font-size: 15px;
+  color: #8a8d99;
+  margin-bottom: 24px;
+}
+
+.noteImage {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.noteImage img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.noteBody {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #2a2b33;
+}
+
+.sectionHeading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1b1c22;
+  margin: 22px 0 8px;
+}
+
+.sectionHeading:first-child {
+  margin-top: 0;
+}
+
+/* Checklist */
+.checklist {
+  gap: 10px 24px;
+  margin: 10px 0 22px;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #2a2b33;
+  cursor: pointer;
+  margin: 0;
+}
+
+.checkboxInput {
+  width: 18px;
+  height: 18px;
+  accent-color: #5b4bf5;
+  cursor: pointer;
+}
+
+.checkedLabel {
+  text-decoration: line-through;
+  color: #a0a3b1;
+}
+
+.closingText {
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detailWrapper {
+    padding: 16px 16px 32px;
+  }
+
+  .noteCard {
+    padding: 24px 20px 32px;
+  }
+
+  .noteTitle {
+    font-size: 30px;
+  }
+
+  .noteImage img {
+    height: 220px;
+  }
+}

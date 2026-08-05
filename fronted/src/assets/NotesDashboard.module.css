@@ -6,20 +6,20 @@
 }
 
 /* Top bar */
-.topbar {
+/* .topbar {
   background-color: #f5f6fb;
   padding: 16px 32px;
   border-bottom: 1px solid #e5e7eb;
-}
+} */
 
-.logo {
+/* .logo {
   font-size: 22px;
   font-weight: 700;
   color: #4f46e5;
   white-space: nowrap;
-}
+} */
 
-.searchWrapper {
+/* .searchWrapper {
   flex: 1;
   max-width: 480px;
   margin: 0 32px;
@@ -30,14 +30,14 @@
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 0 14px;
-}
+} */
 
-.searchIcon {
+/* .searchIcon {
   flex-shrink: 0;
   margin-right: 10px;
-}
+} */
 
-.searchInput {
+/* .searchInput {
   flex: 1;
   border: none;
   outline: none;
@@ -45,16 +45,16 @@
   padding: 10px 0;
   font-size: 14px;
   color: #111827;
-}
+} */
 
-.searchInput::placeholder {
+/* .searchInput::placeholder {
   color: #9ca3af;
-}
+} */
 
-.topbarActions {
+/* .topbarActions {
   gap: 8px;
   flex-shrink: 0;
-}
+} */
 
 .iconBtn {
   width: 40px;
@@ -67,7 +67,7 @@
   border-radius: 50%;
 }
 
-.iconBtn:hover {
+/* .iconBtn:hover {
   background-color: #ffffff;
 }
 
@@ -83,7 +83,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 4px;
-}
+} */
 
 /* Content */
 .content {
@@ -130,6 +130,7 @@
 
 /* Notes grid */
 .notesGrid {
+  /* position: relative; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -244,4 +245,52 @@
 
 .fab:hover {
   background-color: #4338ca;
+}
+
+.icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 15px;
+  bottom:15px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+  border: 1px solid #dbeafe;
+}
+
+.icon:last-child:hover{
+  color: #fff !important;
+  border-color: rgb(153, 2, 2);
+  background-color: rgb(153, 2, 2);
+}
+
+.icon:nth-child(2):hover{
+  color: #fff !important;
+  border-color: orange;
+  background-color: orange;
+}
+
+.icon:first-child:hover{
+  color: #fff !important;
+  border-color: royalblue;
+  background-color: royalblue;
+}
+
+.notesGrid:hover .icons{
+  opacity: 1;
+  visibility:visible;
+  transition: opacity .20s ease;
 }

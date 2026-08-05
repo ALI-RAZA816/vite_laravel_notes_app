@@ -9,6 +9,9 @@ import VerifyEmail from './pages/Verifyemail';
 import ResetPassword from './pages/ResetPassword';
 import Sidebar from './components/Sidebar';
 import NotesDashboard from './pages/NotesDashboard';
+import Header from './components/Header';
+import Favorite from './pages/Favorite';
+import SingleNote from './pages/SingleNote';
 
 function App() {
 
@@ -22,7 +25,11 @@ function App() {
           <Route path="/verifyemail" element={<VerifyEmail/>}/>
           <Route path="/resetpassword" element={<ResetPassword/>}/>
           <Route path="/dashboard" element={<Sidebar/>}>
-            <Route path='notes' element={<NotesDashboard/>}/>
+            <Route path='notes' element={<Header/>}>
+              <Route index element={<NotesDashboard/>}/>
+              <Route path='favourite' element={<Favorite/>}/>
+              <Route path='singlenote' element={<SingleNote/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
