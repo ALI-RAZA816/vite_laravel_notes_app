@@ -80,8 +80,7 @@ const NotesDashboard = () => {
         </div>
 
         {/* Notes grid */}
-        <div style={{border:'1px solid red'}} className={styles.notesGrid}>
-          <div className={`${styles.box} position-relative`} style={{border:'1px solid red'}}>
+        <div className={styles.notesGrid}>
             {notes.map((note) => (
               <Link className="text-decoration-none" to="/dashboard/notes/singlenote" key={note.id}>
                 <div className={styles.noteCard}>
@@ -99,22 +98,21 @@ const NotesDashboard = () => {
                     <h3 className={styles.noteTitle}>{note.title}</h3>
                     <p className={styles.noteExcerpt}>{note.excerpt}</p>
                   </div>
+                  <div className={styles.icons}>
+                    <div onClick={()=>showNote('editbtn')} className={`${styles.icon} me-2`}>
+                      <MdOutlineEdit className={`${styles.editIcon}`} />
+                    </div>
+                    <div className={`${styles.icon} me-2`}>
+                      <MdOutlineStarOutline className={`${styles.start}`} />
+                    </div>
+                    <div onClick={showDelete} className={`${styles.icon}`}>
+                      <RiDeleteBinLine className={`${styles.deleteIcon}`}/>
+                    </div>
+                </div>
                 </div>
               </Link>
             ))}
-            <div className={styles.icons}>
-              <div onClick={()=>showNote('editbtn')} className={`${styles.icon} me-2`}>
-                <MdOutlineEdit className={`${styles.editIcon}`} />
-              </div>
-              <div className={`${styles.icon} me-2`}>
-                <MdOutlineStarOutline className={`${styles.start}`} />
-              </div>
-              <div onClick={showDelete} className={`${styles.icon}`}>
-                <RiDeleteBinLine className={`${styles.deleteIcon}`}/>
-              </div>
-            </div>
           </div>
-        </div>
       </main>
 
       {/* Floating add button */}

@@ -1,0 +1,344 @@
+.pageWrapper {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 20px 32px 40px;
+  background: #f7f7fb;
+  min-height: 100vh;
+}
+
+
+/* Heading row */
+.headingRow {
+  margin-bottom: 24px;
+}
+
+.pageTitle {
+  font-size: 30px;
+  font-weight: 800;
+  color: #1b1c22;
+  margin: 0 0 4px;
+}
+
+.pageSubtitle {
+  font-size: 15px;
+  color: #6b6e78;
+  margin: 0;
+}
+
+/* Stat cards */
+.statsRow {
+  margin-bottom: 24px;
+  --bs-gutter-x: 1.25rem;
+}
+
+.statCard {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 2px 10px rgba(20, 20, 40, 0.05);
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-size: 15px;
+  color: #4b4d57;
+  font-weight: 500;
+}
+
+.statIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.statIconPurple {
+  background: #eae7ff;
+  color: #5b4bf5;
+}
+
+.statIconGray {
+  background: #eef0f4;
+  color: #4b4d57;
+}
+
+.statValueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.statValue {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1b1c22;
+}
+
+.statDeltaPositive {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5b4bf5;
+}
+
+.statDeltaNeutral {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b6e78;
+}
+
+.statDeltaWarning {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d92d20;
+}
+
+/* Table card */
+.tableCard {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(20, 20, 40, 0.05);
+  overflow: hidden;
+}
+
+.filterBar {
+  padding: 18px 22px;
+  gap: 12px;
+}
+
+.filterInputWrapper {
+  position: relative;
+  flex: 1;
+}
+
+.filterIcon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: #9295a3;
+  font-size: 15px;
+}
+
+.filterInput {
+  width: 100%;
+  border: 1px solid #e4e4ee;
+  border-radius: 8px;
+  padding: 10px 12px 10px 38px;
+  font-size: 14px;
+  color: #2a2b33;
+}
+
+.filterInput::placeholder {
+  color: #9295a3;
+}
+
+.filterInput:focus {
+  outline: none;
+  border-color: #5b4bf5;
+}
+
+.dropdownBtn {
+  border: 1px solid #e4e4ee;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2a2b33;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.caret {
+  font-size: 11px;
+  margin-left: 4px;
+  color: #9295a3;
+}
+
+/* Table */
+.usersTable {
+  margin: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.usersTable thead th {
+  border-top: 1px solid #eef0f4;
+  border-bottom: 1px solid #eef0f4;
+  padding: 14px 22px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #6b6e78;
+  text-transform: uppercase;
+}
+
+.usersTable tbody td {
+  padding: 18px 22px;
+  border-bottom: 1px solid #f2f2f6;
+  vertical-align: middle;
+  font-size: 15px;
+}
+
+.usersTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.userPhoto {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userInitials {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.userName {
+  font-weight: 600;
+  color: #1b1c22;
+}
+
+.userEmail {
+  font-size: 13px;
+  color: #8a8d99;
+}
+
+.roleBadge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 16px;
+}
+
+.roleAdmin {
+  background: #eae7ff;
+  color: #5b4bf5;
+}
+
+.roleEditor {
+  background: #eef0f4;
+  color: #4b4d57;
+}
+
+.roleViewer {
+  background: #eaf0ff;
+  color: #3860c9;
+}
+
+.statusCell {
+  font-size: 15px;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.statusActive {
+  color: #1b1c22;
+}
+.statusActive .statusDot {
+  background: #16a34a;
+}
+
+.statusInactive {
+  color: #6b6e78;
+}
+.statusInactive .statusDot {
+  background: #9295a3;
+}
+
+.statusPending {
+  color: #d92d20;
+  font-weight: 600;
+}
+.statusPending .statusDot {
+  background: #d92d20;
+}
+
+.lastActive {
+  color: #4b4d57;
+}
+
+.moreBtn {
+  border: none;
+  background: transparent;
+  color: #6b6e78;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Footer / pagination */
+.tableFooter {
+  padding: 16px 22px;
+  border-top: 1px solid #eef0f4;
+}
+
+.showingText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2a2b33;
+}
+
+.pagination {
+  gap: 12px;
+}
+
+.pageBtn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e4e4ee;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b4d57;
+  cursor: pointer;
+}
+
+.pageBtn:disabled {
+  color: #c8cad3;
+  cursor: not-allowed;
+}
+
+.pageNumber {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1b1c22;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pageWrapper {
+    padding: 16px 16px 32px;
+  }
+
+  .searchWrapper {
+    width: 220px;
+  }
+
+  .filterBar {
+    flex-wrap: wrap;
+  }
+
+  .usersTable {
+    font-size: 13px;
+  }
+}

@@ -12,6 +12,9 @@ import NotesDashboard from './pages/NotesDashboard';
 import Header from './components/Header';
 import Favorite from './pages/Favorite';
 import SingleNote from './pages/SingleNote';
+import UserManagement from './pages/UserManagement';
+import SettingsPage from './pages/SettingsPage';
+import EditProfile from './pages/EditProfile';
 
 function App() {
 
@@ -27,8 +30,17 @@ function App() {
           <Route path="/dashboard" element={<Sidebar/>}>
             <Route path='notes' element={<Header/>}>
               <Route index element={<NotesDashboard/>}/>
-              <Route path='favourite' element={<Favorite/>}/>
               <Route path='singlenote' element={<SingleNote/>}/>
+            </Route>
+            <Route path='favourite' element={<Header/>}>
+              <Route index element={<Favorite/>}/>
+            </Route>
+            <Route path='users' element={<Header/>}>
+              <Route index element={<UserManagement/>}/>
+              <Route path='edituser' element={<EditProfile/>}/>
+            </Route>
+            <Route path='setting' element={<Header/>}>
+              <Route index element={<SettingsPage/>}/>
             </Route>
           </Route>
         </Routes>

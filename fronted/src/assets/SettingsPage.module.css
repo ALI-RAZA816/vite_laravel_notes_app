@@ -1,0 +1,178 @@
+.pageWrapper {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 20px 32px 40px;
+  background: #f7f7fb;
+  min-height: 100vh;
+}
+
+
+/* Heading */
+.headingBlock {
+  margin-bottom: 24px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1b1c22;
+  margin: 0 0 6px;
+}
+
+.pageSubtitle {
+  font-size: 15px;
+  color: #6b6e78;
+  margin: 0;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(20, 20, 40, 0.05);
+  padding: 26px 28px 30px;
+  margin-bottom: 22px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1b1c22;
+  margin: 0 0 22px;
+}
+
+/* Account profile */
+.profileRow {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.profilePhotoWrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+
+.profilePhoto {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #5b4bf5;
+}
+
+.editPhotoBtn {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: #5b4bf5;
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.profileName {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1b1c22;
+}
+
+.profileEmail {
+  font-size: 14px;
+  color: #6b6e78;
+}
+
+.changePasswordBtn {
+  border: 1px solid #d9d6ff;
+  background: #f2f0ff;
+  color: #5b4bf5;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.changePasswordBtn:hover {
+  background: #eae7ff;
+}
+
+
+/* Workspace */
+.workspaceRow {
+  border: 1px solid #eef0f4;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.workspaceRow:last-child {
+  margin-bottom: 0;
+}
+
+.workspaceIcon {
+  font-size: 22px;
+  color: #5b4bf5;
+  flex-shrink: 0;
+}
+
+.workspaceLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1b1c22;
+}
+
+.workspaceDesc {
+  font-size: 13px;
+  color: #8a8d99;
+  margin-top: 2px;
+}
+
+.dangerRow {
+  background: #fdf3f3;
+  border-color: #f7dede;
+}
+
+.dangerIcon {
+  color: #d92d20;
+}
+
+.dangerLabel {
+  color: #d92d20;
+}
+
+.deleteBtn {
+  border: none;
+  background: transparent;
+  color: #d92d20;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pageWrapper {
+    padding: 16px 16px 32px;
+  }
+
+  .searchWrapper {
+    width: 100%;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .themeOption {
+    width: 120px;
+  }
+}
