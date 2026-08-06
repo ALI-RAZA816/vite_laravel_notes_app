@@ -3,62 +3,29 @@ import styles from "../assets/NoteModel.module.css";
 import { AppContext } from "../context/AppContext";
 import { apiUrl } from "../components/Https";
 
-export default function NoteModel() {
-  const {showNoteModel, setNoteModel,fetchNotes, allCategory, hideNote} = useContext(AppContext);
+export default function EditNoteModel() {
+  
+  const {allCategory,fetchEditNote, fetchNotes, editNoteHandler, setShowEditNote} = useContext(AppContext);
 
-  const [noteErr, setNoteErr] = useState({
-    title:'',
-    category_id:'',
-    user_id:'',
-    content:''
-  });
-
-  const [noteData, setNoteData] = useState({
-    title:'',
-    category_id:'',
-    user_id:'',
-    content:''
-  });
-
-  const handleChange = (event)=>{
-    const {name, value} = event.target
-    setNoteData((prev)=>({
-      ...prev,
-      [name]:value
-    }));
-  }
-
-  const addnote = async (event)=>{
+  const UpdateNote = async (event)=>{
     event.preventDefault();
     const token = localStorage.getItem('token');
-    const id = localStorage.getItem('userId');
-
-    const payload = {
-      ...noteData,
-      user_id:id
-    }
-    
-    
-    const res = await fetch(`${apiUrl}/note`,{
+    const res = await fetch(`${apiUrl}/update`,{
       method:'POST',
       headers:{
         'Content-type':'application/json',
-        'Authorization':`Bearer ${token}`
+        'Accept':'application/json',
+        'Authorization':`Berear ${token}`
       },
-      body:JSON.stringify(payload)
+      body:JSON.stringify(fetchEditNote)
     })
     .then(resp => resp.json())
     .then((result)=>{
-      if(result.status === 400){
-        setNoteErr((prev)=>({
-          ...prev,
-          [result.type]:result.message
-        }));
-      }else if(result.status === 200){
-        setNoteModel(false);
-        fetchNotes();
+      if(result.status === 200){
+        setShowEditNote(false);
+        fetchNotes()
       }
-    })
+    });
   }
 
   return (
@@ -71,7 +38,7 @@ export default function NoteModel() {
               <i className={`bi bi-pencil-square ${styles.icon}`}></i>
             </div>
             <div className="ms-3">
-              <h2 className={styles.title}>Create New Note</h2>
+              <h2 className={styles.title}>Edit Note</h2>
               <p className={styles.subtitle}>WORKSPACE &bull; NOTESHUB</p>
             </div>
           </div>
@@ -86,7 +53,7 @@ export default function NoteModel() {
 
         {/* Body */}
         <div className={styles.body}>
-          <form onSubmit={addnote}>
+          <form onSubmit={UpdateNote}>
             {/* Note Title */}
             <div className="mb-4">
               <label htmlFor="noteTitle" className={styles.label}>
@@ -96,12 +63,11 @@ export default function NoteModel() {
                 id="noteTitle"
                 type="text"
                 name="title"
-                value={noteData.title}
-                onChange={handleChange}
+                onChange={editNoteHandler}
+                value={fetchEditNote.title}
                 className={`form-control ${styles.input}`}
                 placeholder="What's on your mind?"
               />
-              <span className="text-danger">{noteErr.title}</span>
             </div>
             {/* Category + Visual Inspiration */}
             <div className="row mb-4">
@@ -110,16 +76,16 @@ export default function NoteModel() {
                   Category
                 </label>
                 <select
-                  id="category" name="category_id" value={noteData.category_id} onChange={handleChange}
+                  id="category" name="category_id"
+                  onChange={editNoteHandler}
+                  value={fetchEditNote.category_id}
                   className={`form-select ${styles.select}`}
                 >
-                  <option value="" disabled>Select Category </option>
+                  <option defaultValue disabled>Select Category </option>
                   {allCategory.map(item=>{
                     return <option key={item.id} value={item.id}>{item.category_name}</option>
                   })}
-                  
                 </select>
-                <span className="text-danger">{noteErr.category_id}</span>
               </div>
             </div>
               {/* Content */}
@@ -127,19 +93,16 @@ export default function NoteModel() {
               <label htmlFor="content" className={styles.label}>
                 Content
               </label>
-              <textarea
-                value={noteData.content}
-                onChange={handleChange}
-                id="content" name="content"
+              <textarea onChange={editNoteHandler}
+                id="content" name="content" defaultValue={fetchEditNote.content}
                 className={`form-control ${styles.textarea}`}
                 placeholder="Start typing your note here..."
               ></textarea>
-              <span className="text-danger">{noteErr.content}</span>
             </div>
             {/* Footer */}
             <div className={`${styles.footer} d-flex justify-content-end align-items-center`}>
-              <button onClick={hideNote} type="button" className={styles.cancelBtn}>Cancel</button>
-              <button type="submit" className={styles.saveBtn} >Save Note</button>
+              <button onClick={()=>setShowEditNote(false)} type="button" className={styles.cancelBtn}>Cancel</button>
+              <button type="submit" className={styles.saveBtn} >Edit Note</button>
             </div>
           </form>
         </div>

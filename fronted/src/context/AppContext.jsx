@@ -6,8 +6,23 @@ const  ContextProvider = ({children})=>{
 
     const [openModel, setopenModel] = useState(false);
     const [showNoteModel, setNoteModel] = useState(false);
-    const [notesType, setNotesType] = useState(null);
     const [showDeleteModel, setShowDeleteModel] = useState(false);
+    const [showEditNote, setShowEditNote] = useState(false);
+
+    const [fetchEditNote, setFetchEditNote] = useState({
+        id:'',
+        title:'',
+        category_id:'',
+        content:''
+    });
+
+    const editNoteHandler = (event)=>{
+        const {name, value} = event.target;
+        setFetchEditNote((prev)=>({
+            ...prev,
+            [name]:value
+        }));
+    }
 
     const showModel = (event)=>{
         event.preventDefault();
@@ -18,7 +33,6 @@ const  ContextProvider = ({children})=>{
         setopenModel(false);
     }
     const showNote = ($name)=>{
-        setNotesType($name);
         setNoteModel(true);
     }
     const hideNote = (event)=> setNoteModel(false);
@@ -67,6 +81,9 @@ const  ContextProvider = ({children})=>{
         fetchNotes();
     },[]);
 
+
+    const [singleNote, setSingleNote] = useState();
+
     return (
             <AppContext.Provider value={{
                 openModel,
@@ -77,14 +94,21 @@ const  ContextProvider = ({children})=>{
                 showNote,
                 hideNote,
                 hideModel,
-                notesType,
                 allCategory,
                 setAllCategory,
                 showDelete,
                 allNotes,
                 hideDelete,
                 fetchCategories,
-                showDeleteModel
+                fetchNotes,
+                showDeleteModel,
+                setSingleNote,
+                singleNote,
+                showEditNote,
+                setShowEditNote,
+                fetchEditNote,
+                setFetchEditNote,
+                editNoteHandler
             }}>
                 {children}
             </AppContext.Provider>

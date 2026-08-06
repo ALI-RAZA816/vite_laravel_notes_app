@@ -12,12 +12,13 @@ import DeleteModel from "../pages/DeleteModel";
 import { FaUsers } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { apiUrl } from "./Https";
+import EditNoteModel from "../pages/EditNoteModel";
 
 
 
 const Sidebar = () => {
 
-    const { openModel, setopenModel, showNoteModel, showModel, setNoteModel, showDeleteModel} = useContext(AppContext);
+    const { openModel, showEditNote, setopenModel, showNoteModel, showModel, setNoteModel, showDeleteModel} = useContext(AppContext);
 
     const navigate = useNavigate();
     const logoutAccount = async ()=>{
@@ -39,6 +40,7 @@ const Sidebar = () => {
 
   return (
     <>
+    {showEditNote && <EditNoteModel/>}
     {openModel && <CategoryModel/>}
     {showNoteModel && <NoteModel/>}
     {showDeleteModel && <DeleteModel/>}

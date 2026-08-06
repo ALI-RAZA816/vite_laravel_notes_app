@@ -64,4 +64,57 @@ class NoteController extends Controller
             'message'=>'Notes added'
         ],200);
     }
+
+    public function singleView(int $id){
+
+        $singleNote = DB::table('notes')->join('categories','notes.category_id','=','categories.id')->select('notes.*','categories.category_name')->where('notes.id',$id)->first();
+
+        if(!$singleNote){
+            return response()->json([
+                'status'=>404,
+                'message'=>'No note found'
+            ],404);
+        }else{
+            return response()->json([
+                'status'=>200,
+                'note'=>$singleNote
+            ],200);
+        }
+    }
+
+    public function fetchEdit(int $id){
+        $singleNote = DB::table('notes')->join('categories','notes.category_id','=','categories.id')->select('notes.*','categories.category_name')->where('notes.id',$id)->first();
+        if(!$singleNote){
+            return response()->json([
+                'status'=>404,
+                'message'=>'something went wrong'
+            ],404);
+        }else{
+            return response()->json([
+                'status'=>200,
+                'note'=>$singleNote
+            ],200);
+        }
+
+    }
+
+    public function updateNote(Request $request){
+
+        $updated = DB::table('notes')->where('id',$request->id)->update([
+            'title'=>$request->title,
+            'category_id'=>$request->category_id,
+            'content'=>$request->content,
+        ]);
+        if($updated){
+            return response()->json([
+                'status'=>200,
+                'message'=>'Note updated'
+            ],200);
+        }else{
+            return response()->json([
+                'status'=>409,
+                'message'=>'Something went wrong'
+            ],409);
+        }
+    }
 }

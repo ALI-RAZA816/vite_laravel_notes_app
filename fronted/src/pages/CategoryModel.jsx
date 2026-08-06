@@ -48,14 +48,12 @@ const CategoryModel = () => {
   }
 
   const deletCategory = async (id)=>{
-    const res = await fetch(`${apiUrl}/deletecat`,{
-      method:'POST',
+    const res = await fetch(`${apiUrl}/deletecat/${id}`,{
+      method:'DELETE',
       headers:{
-        'Content-type':'application/json'
+        'Content-type':'application/json',
+        'Accept':'application/json'
       },
-      body:JSON.stringify({
-        delete:id
-      })
     })
     .then(resp => resp.json())
     .then((result) => {

@@ -54,22 +54,24 @@ class CategoryController extends Controller
 
     }
 
-    public function deleteCategory(Request $request){
-        if(!$request->delete){
+    public function deleteCategory(int $id){
+    
+        $category = DB::table('categories')->where('id',$id)->first();
+        if(!$category){
             return response()->json([
-                'status'=>400,
+                'status'=>404,
                 'type'=>'category',
-                'message'=>'Something went wrong'
-            ]);
-        }else{
-            $allCategory = DB::table('categories')->get();
-            DB::table("categories")->where('id',$request->delete)->delete();
-            return response()->json([
-                'status'=>200,
-                'type'=>'category',
-                'categories'=>$allCategory,
-                'message'=>'Category Deleted'
+                'message'=>'Category not found'
             ]);
         }
+
+        DB::table("categories")->where('id',$id)->delete();
+        $allCategory = DB::table('categories')->get();
+        return response()->json([
+            'status'=>200,
+            'type'=>'category',
+            'categories'=>$allCategory,
+            'message'=>'Category Deleted'
+        ]);
     }
 }
