@@ -32,6 +32,7 @@ const Sidebar = () => {
         .then((result) =>{
             localStorage.removeItem('token');
             localStorage.removeItem('role');
+            localStorage.removeItem('userId');
             navigate('/login');
         });
     }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\NoteController;
 
 
 Route::get('/user', function (Request $request) {
@@ -16,4 +17,6 @@ Route::post('logout',[UserController::class,'logoutAccount']);
 Route::post('category',[CategoryController::class,'addCategory']);
 Route::get('fetchcat',[CategoryController::class,'fetchCategory']);
 Route::post('deletecat',[CategoryController::class,'deleteCategory']);
+Route::post('note',[NoteController::class,'addNote']);
+Route::get('allnotes',[NoteController::class,'fetchNotes']);
 

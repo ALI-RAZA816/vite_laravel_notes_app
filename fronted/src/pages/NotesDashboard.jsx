@@ -10,25 +10,8 @@ import {Link} from 'react-router-dom';
 
 const NotesDashboard = () => {
 
-  const {showNoteModel, setNoteModel, showNote, showDelete} = useContext(AppContext);
+  const {showNoteModel, setNoteModel, showNote, allNotes, showDelete} = useContext(AppContext);
 
-  const notes = [
-    {
-      id: 1,
-      tag: "Work",
-      date: "Oct 24, 2023",
-      title: "Project Alpha Strategy",
-      excerpt:
-        "The primary objective for the next quarter is to finalize the design system implementation and...",
-      footer: "avatar",
-      footerValue: "JD",
-      image: null,
-    }
-  ];
-
-  const tagClassMap = {
-    Work: styles.tagWork,
-  };
 
   return (
     <div className={styles.mainWrapper}>
@@ -59,25 +42,19 @@ const NotesDashboard = () => {
 
         {/* Notes grid */}
         <div className={styles.notesGrid}>
-            {notes.map((note) => (
-              <Link className="text-decoration-none" to="/dashboard/notes/singlenote" key={note.id}>
+            {allNotes.map((item) => (
+              <Link className="text-decoration-none" to="/dashboard/notes/singlenote" key={item.id}>
                 <div className={styles.noteCard}>
-                  {note.image && (
-                    <div
-                      className={styles.noteImage}
-                      style={{ backgroundImage: `url(${note.image})` }}
-                    ></div>
-                  )}
                   <div className={styles.noteCardBody}>
                     <div className={`d-flex align-items-center justify-content-between ${styles.noteTop}`}>
-                      <span className={`${styles.tag} ${tagClassMap[note.tag]}`}>{note.tag}</span>
-                      <span className={styles.noteDate}>{note.date}</span>
+                      <span className={`${styles.tag} `}>{item.category_name}</span>
+                      <span className={styles.noteDate}>{item.note_date}</span>
                     </div>
-                    <h3 className={styles.noteTitle}>{note.title}</h3>
-                    <p className={styles.noteExcerpt}>{note.excerpt}</p>
+                    <h3 className={styles.noteTitle}>{item.title}</h3>
+                    <p className={styles.noteExcerpt}>{item.content}</p>
                   </div>
                   <div className={styles.icons}>
-                    <div onClick={()=>showNote('editbtn')} className={`${styles.icon} me-2`}>
+                    <div className={`${styles.icon} me-2`}>
                       <MdOutlineEdit className={`${styles.editIcon}`} />
                     </div>
                     <div className={`${styles.icon} me-2`}>

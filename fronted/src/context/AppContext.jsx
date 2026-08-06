@@ -26,6 +26,7 @@ const  ContextProvider = ({children})=>{
     const hideDelete = ()=> setShowDeleteModel(false);
 
     const [allCategory, setAllCategory] = useState([]);
+    const [allNotes, setAllNotes] = useState([]);
 
     const fetchCategories = async ()=>{
         const res = await fetch(`${apiUrl}/fetchcat`,{
@@ -44,8 +45,26 @@ const  ContextProvider = ({children})=>{
         });
     }
     
+    const fetchNotes = async ()=>{
+        const res = await fetch(`${apiUrl}/allnotes`,{
+            method:'GET',
+            headers:{
+            'Content-type':'application/json',
+            'Accept':'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then((result)=>{
+            if(result.status === 200){
+                const allNotes = result.notes;
+                setAllNotes(allNotes);
+            }
+        });
+    }
+    
     useEffect(()=>{
         fetchCategories();
+        fetchNotes();
     },[]);
 
     return (
@@ -62,6 +81,7 @@ const  ContextProvider = ({children})=>{
                 allCategory,
                 setAllCategory,
                 showDelete,
+                allNotes,
                 hideDelete,
                 fetchCategories,
                 showDeleteModel

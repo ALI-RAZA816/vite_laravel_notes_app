@@ -116,6 +116,7 @@ class UserController extends Controller
             return response()->json([
                 'status'=>200,
                 'token'=>$token,
+                'id'=>$validUser->id,
                 'role'=>$validUser->role,
                 'message'=>'Login successful'
             ]);

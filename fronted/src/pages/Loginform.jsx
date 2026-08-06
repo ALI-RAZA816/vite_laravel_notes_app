@@ -49,6 +49,7 @@ const LoginForm = () => {
       else if(result.status === 200){
         localStorage.setItem('token', result.token);
         localStorage.setItem('role', result.role);
+        localStorage.setItem('userId', result.id);
         setFormData({email: '', password: ''});
         navigate('/dashboard/notes');
       }
