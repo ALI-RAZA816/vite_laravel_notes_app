@@ -1,9 +1,57 @@
 import React, { useState } from "react";
 import styles from "../assets/LoginForm.module.css";
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import { apiUrl } from "../components/Https";
 
 const LoginForm = () => {
 
+  const navigate =  useNavigate();
+  const [formErr, setFormmErr] = useState({
+    email:'',
+    password:''
+  });
+
+  const [formData, setFormData] = useState({
+    email:'',
+    password:''
+  });
+
+  const handleChange = (event)=>{
+    const {name, value} = event.target;
+    setFormData((prev)=>({
+      ...prev,
+      [name]:value
+    }));
+  }
+
+  const submitData = async (event)=>{
+    event.preventDefault();
+    const res = await fetch(`${apiUrl}/login`,{
+      method:'POST',
+      headers:{
+        'Content-type':'application/json'
+      },
+      body:JSON.stringify(formData)
+    })
+    .then(resp=> resp.json())
+    .then((result)=> {
+      if(result.status === 400){
+        setFormmErr((prev)=>({
+            ...prev,
+            [result.type]:result.message
+        }));
+      }else if(result.status === 409){
+         setFormmErr((prev)=>({
+            ...prev,
+            [result.type]:result.message
+        }));
+      }
+      else if(result.status === 200){
+          setFormData({email: '', password: ''});
+          navigate('/dashboard/notes');
+      }
+    })
+  }
 
   return (
     <div className={`container-fluid vh-100 d-flex justify-content-center align-items-center`}>
@@ -28,7 +76,7 @@ const LoginForm = () => {
 
         {/* Card */}
         <div className={styles.card}>
-          <form >
+          <form onSubmit={submitData}>
             {/* Email */}
             <div className="mb-4">
               <label htmlFor="email" className={styles.label}>
@@ -60,9 +108,12 @@ const LoginForm = () => {
                   id="email"
                   name="email"
                   className={styles.input}
+                  onChange={handleChange}
+                  value={formData.email}
                   placeholder="name@company.com"
                 />
               </div>
+              <span className="text-danger">{formErr.email}</span>
             </div>
 
             {/* Password */}
@@ -94,10 +145,13 @@ const LoginForm = () => {
                   type="password"
                   id="password"
                   name="password"
+                  onChange={handleChange}
+                  value={formData.password}
                   className={styles.input}
                   placeholder="••••••••"
                 />
               </div>
+              <span className="text-danger">{formErr.password}</span>
             </div>
 
             {/* Submit */}

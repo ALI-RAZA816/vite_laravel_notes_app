@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 export const AppContext = createContext();
 
 const  ContextProvider = ({children})=>{
@@ -24,7 +23,6 @@ const  ContextProvider = ({children})=>{
     const hideNote = (event)=> setNoteModel(false);
     const showDelete = ()=> setShowDeleteModel(true);
     const hideDelete = ()=> setShowDeleteModel(false);
-
 
     return (
             <AppContext.Provider value={{

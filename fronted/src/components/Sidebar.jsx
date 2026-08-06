@@ -10,13 +10,19 @@ import {AppContext} from "../context/AppContext";
 import NoteModel from "../pages/NoteModel";
 import DeleteModel from "../pages/DeleteModel";
 import { FaUsers } from "react-icons/fa";
+import { IoIosLogOut } from "react-icons/io";
+import { apiUrl } from "./Https";
 
 
 
 const Sidebar = () => {
 
     const { openModel, setopenModel, showNoteModel, showModel, setNoteModel, showDeleteModel} = useContext(AppContext);
-
+    const logout = ()=>{
+        const res = await fetch(`${apiUrl}/logout`,{
+            method:'POST',
+        })
+    }
   return (
     <>
     {openModel && <CategoryModel/>}
@@ -58,6 +64,7 @@ const Sidebar = () => {
                             Settings
                             </button>
                         </Link>
+                        <button type="button" className={`d-flex align-items-center text-danger w-100 ${styles.bottomItem}`}><IoIosLogOut />Logout</button>
                         <button type="button" className={`d-flex align-items-center w-100 ${styles.bottomItem}`}>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                             <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
