@@ -15,6 +15,7 @@ import SingleNote from './pages/SingleNote';
 import UserManagement from './pages/UserManagement';
 import SettingsPage from './pages/SettingsPage';
 import EditProfile from './pages/EditProfile';
+import { AuthDashboard } from './auth/AuthDashboard';
 
 function App() {
 
@@ -27,20 +28,22 @@ function App() {
           <Route path="/forgottonpassword" element={<ForgotPassword/>}/>
           <Route path="/verifyemail" element={<VerifyEmail/>}/>
           <Route path="/resetpassword" element={<ResetPassword/>}/>
-          <Route path="/dashboard" element={<Sidebar/>}>
-            <Route path='notes' element={<Header/>}>
-              <Route index element={<NotesDashboard/>}/>
-              <Route path='singlenote' element={<SingleNote/>}/>
-            </Route>
-            <Route path='favourite' element={<Header/>}>
-              <Route index element={<Favorite/>}/>
-            </Route>
-            <Route path='users' element={<Header/>}>
-              <Route index element={<UserManagement/>}/>
-              <Route path='edituser' element={<EditProfile/>}/>
-            </Route>
-            <Route path='setting' element={<Header/>}>
-              <Route index element={<SettingsPage/>}/>
+          <Route element={<AuthDashboard/>}>
+            <Route path="/dashboard" element={<Sidebar/>}>
+              <Route path='notes' element={<Header/>}>
+                <Route index element={<NotesDashboard/>}/>
+                <Route path='singlenote' element={<SingleNote/>}/>
+              </Route>
+              <Route path='favourite' element={<Header/>}>
+                <Route index element={<Favorite/>}/>
+              </Route>
+              <Route path='users' element={<Header/>}>
+                <Route index element={<UserManagement/>}/>
+                <Route path='edituser' element={<EditProfile/>}/>
+              </Route>
+              <Route path='setting' element={<Header/>}>
+                <Route index element={<SettingsPage/>}/>
+              </Route>
             </Route>
           </Route>
         </Routes>

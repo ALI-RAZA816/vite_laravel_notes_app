@@ -123,8 +123,15 @@
   margin: 0;
   padding: 0;
   display: flex;
+  max-height: 150px;
+  overflow: hidden;
+  overflow-y: auto;
   flex-direction: column;
   gap: 32px;
+}
+
+.categoryList::-webkit-scrollbar{
+  display: none;
 }
 
 .categoryItem {

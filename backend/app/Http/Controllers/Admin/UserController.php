@@ -116,6 +116,7 @@ class UserController extends Controller
             return response()->json([
                 'status'=>200,
                 'token'=>$token,
+                'role'=>$validUser->role,
                 'message'=>'Login successful'
             ]);
         }
@@ -124,13 +125,15 @@ class UserController extends Controller
 
     public function logoutAccount(Request $request){
         if(Auth::check()){
+            Auth::logout();
             $user = $request->user();
             $user->tokens()->delete();
-            Auth::logout();
-            return response()->json([
-                'status'=>200,
-                'message'=>'You logout'
-            ]);
         }
+            return response()->json([
+                'status'=>true,
+                'message'=>'You logged out'
+            ],200);
+
     }
+
 }

@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { apiUrl } from "../components/Https";
 export const AppContext = createContext();
 
 const  ContextProvider = ({children})=>{
@@ -24,6 +25,29 @@ const  ContextProvider = ({children})=>{
     const showDelete = ()=> setShowDeleteModel(true);
     const hideDelete = ()=> setShowDeleteModel(false);
 
+    const [allCategory, setAllCategory] = useState([]);
+
+    const fetchCategories = async ()=>{
+        const res = await fetch(`${apiUrl}/fetchcat`,{
+            method:'GET',
+            headers:{
+            'Content-type':'application/json',
+            'Accept':'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then((result)=>{
+            if(result.status === 200){
+                const newCategories = result.categories;
+                setAllCategory(newCategories);
+            }
+        });
+    }
+    
+    useEffect(()=>{
+        fetchCategories();
+    },[]);
+
     return (
             <AppContext.Provider value={{
                 openModel,
@@ -35,8 +59,11 @@ const  ContextProvider = ({children})=>{
                 hideNote,
                 hideModel,
                 notesType,
+                allCategory,
+                setAllCategory,
                 showDelete,
                 hideDelete,
+                fetchCategories,
                 showDeleteModel
             }}>
                 {children}

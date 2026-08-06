@@ -47,8 +47,10 @@ const LoginForm = () => {
         }));
       }
       else if(result.status === 200){
-          setFormData({email: '', password: ''});
-          navigate('/dashboard/notes');
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('role', result.role);
+        setFormData({email: '', password: ''});
+        navigate('/dashboard/notes');
       }
     })
   }

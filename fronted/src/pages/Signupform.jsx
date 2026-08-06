@@ -87,7 +87,7 @@ const SignupForm = () => {
                             <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#6B7280" strokeWidth="1.8" strokeLinecap="round" />
                             </svg>
                         </span>
-                        <input type="text" onChange={handleChange} value={formData.name} id="fullName" name="name" className={styles.input} />
+                        <input type="text" onChange={handleChange} value={formData.name} id="fullName" name="name" className={styles.input} placeholder="Name" />
                     </div>
                     <span className="text-danger">{formErr.name}</span>
                 </div>

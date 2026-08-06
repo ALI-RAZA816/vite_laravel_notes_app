@@ -4,7 +4,7 @@ import { CgNotes } from "react-icons/cg";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { MdOutlineNewLabel } from "react-icons/md";
-import{Link, Outlet} from 'react-router-dom'
+import{Link, Outlet, useNavigate} from 'react-router-dom'
 import CategoryModel from "../pages/CategoryModel";
 import {AppContext} from "../context/AppContext";
 import NoteModel from "../pages/NoteModel";
@@ -18,11 +18,24 @@ import { apiUrl } from "./Https";
 const Sidebar = () => {
 
     const { openModel, setopenModel, showNoteModel, showModel, setNoteModel, showDeleteModel} = useContext(AppContext);
-    const logout = ()=>{
+
+    const navigate = useNavigate();
+    const logoutAccount = async ()=>{
+        const token = localStorage.getItem('token');
         const res = await fetch(`${apiUrl}/logout`,{
             method:'POST',
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
         })
+        .then(resp => resp.json())
+        .then((result) =>{
+            localStorage.removeItem('token');
+            localStorage.removeItem('role');
+            navigate('/login');
+        });
     }
+
   return (
     <>
     {openModel && <CategoryModel/>}
@@ -64,7 +77,7 @@ const Sidebar = () => {
                             Settings
                             </button>
                         </Link>
-                        <button type="button" className={`d-flex align-items-center text-danger w-100 ${styles.bottomItem}`}><IoIosLogOut />Logout</button>
+                        <button onClick={logoutAccount} type="button" className={`d-flex align-items-center text-danger w-100 ${styles.bottomItem}`}><IoIosLogOut />Logout</button>
                         <button type="button" className={`d-flex align-items-center w-100 ${styles.bottomItem}`}>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                             <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />

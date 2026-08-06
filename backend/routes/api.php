@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 Route::get('/user', function (Request $request) {
@@ -12,4 +13,7 @@ Route::get('/user', function (Request $request) {
 Route::post('account',[UserController::class,'CreateAccount']);
 Route::post('login',[UserController::class,'loginAccount']);
 Route::post('logout',[UserController::class,'logoutAccount']);
+Route::post('category',[CategoryController::class,'addCategory']);
+Route::get('fetchcat',[CategoryController::class,'fetchCategory']);
+Route::post('deletecat',[CategoryController::class,'deleteCategory']);
 

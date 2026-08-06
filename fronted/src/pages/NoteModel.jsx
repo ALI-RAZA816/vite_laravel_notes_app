@@ -3,8 +3,7 @@ import styles from "../assets/NoteModel.module.css";
 import { AppContext } from "../context/AppContext";
 
 export default function NoteModel() {
-    const {showNoteModel, setNoteModel, notesType, hideNote} = useContext(AppContext);
-   
+    const {showNoteModel, setNoteModel, notesType, allCategory, hideNote} = useContext(AppContext);
   return (
     <div className={styles.overlay}>
       <div className={`${styles.modal} card`} role="dialog" aria-modal="true">
@@ -53,10 +52,10 @@ export default function NoteModel() {
                 id="category"
                 className={`form-select ${styles.select}`}
               >
-                <option value="Work">Work</option>
-                <option value="Personal">Personal</option>
-                <option value="Ideas">Ideas</option>
-                <option value="Study">Study</option>
+                {allCategory.map(item=>{
+                  return <option value={item.id}>{item.category_name}</option>
+                })}
+                
               </select>
             </div>
           </div>

@@ -23,28 +23,6 @@ const NotesDashboard = () => {
       footer: "avatar",
       footerValue: "JD",
       image: null,
-    },
-    {
-      id: 1,
-      tag: "Work",
-      date: "Oct 24, 2023",
-      title: "Project Alpha Strategy",
-      excerpt:
-        "The primary objective for the next quarter is to finalize the design system implementation and...",
-      footer: "avatar",
-      footerValue: "JD",
-      image: null,
-    },
-    {
-      id: 1,
-      tag: "Work",
-      date: "Oct 24, 2023",
-      title: "Project Alpha Strategy",
-      excerpt:
-        "The primary objective for the next quarter is to finalize the design system implementation and...",
-      footer: "avatar",
-      footerValue: "JD",
-      image: null,
     }
   ];
 
